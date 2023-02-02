@@ -89,4 +89,22 @@ class MemberController extends Controller
 
         return redirect(route('members.index'));
     }
+
+    /**
+     * Display details for a selected member.
+     *
+     * @return \Inertia\Response
+     */
+    public function show(Member $member): Response
+    {
+        return Inertia::render('Members/Show', [
+            'member' => $member,
+            'wins' => $member->wins(),
+            'losses' => $member->losses(),
+            'totalWins' => $member->totalWins(),
+            'totalLosses' => $member->totalLosses(),
+            'averageScore' => $member->averageScore(),
+            'bestResult' => $member->bestResult(),
+        ]);
+    }
 }
