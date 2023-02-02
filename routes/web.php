@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,8 @@ Route::get('/members/{member}', [MemberController::class, 'show'])->name('member
 Route::get('/members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
 Route::put('/members/{member}/update', [MemberController::class, 'update'])->name('members.update');
 
-require __DIR__.'/auth.php';
+Route::get('/results', [ResultController::class, 'index'])->name('results.index');
+Route::post('/results', [ResultController::class, 'store'])->name('results.store');
+Route::get('/results/create', [ResultController::class, 'create'])->name('results.create');
+
+require __DIR__ . '/auth.php';

@@ -186,4 +186,25 @@ class Member extends Model
 
         return $bestResult;
     }
+
+    /**
+     * Get sorted collection of the top 10 average scores
+     * @return SupportCollection
+     */
+    public static function getLeaderboard(): SupportCollection
+    {
+        $members = Member::all();
+        $averageScores = [];
+
+        foreach ($members as $member) {
+            if ($member->totalMatchesPlayed() >= 10) {
+                $averageScores[] = [
+                    'name' => $member->name,
+                    'averageScore' => $member->averageScore(),
+                ];
+            }
+        }
+
+        return collect($averageScores)->sortByDesc('averageScore')->take(10)->values();
+    }
 }

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import NavLink from '@/Components/NavLink.vue';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -21,6 +22,9 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                                 <NavLink :href="route('members.index')" :active="route().current('members.index')">
                                     Members
+                                </NavLink>
+                                <NavLink :href="route('results.index')" :active="route().current('results.index')">
+                                    Results
                                 </NavLink>
                             </div>
                         </div>
