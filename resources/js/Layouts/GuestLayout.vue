@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -20,21 +19,13 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('welcome')" :active="route().current('welcome')">
                                     Home
                                 </NavLink>
+                                <NavLink :href="route('members.index')" :active="route().current('members.index')">
+                                    Members
+                                </NavLink>
                             </div>
                         </div>
 
                     </div>
-                </div>
-
-                <!-- Responsive Navigation Menu -->
-                <div :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
-                    class="sm:hidden">
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
                 </div>
             </nav>
 
